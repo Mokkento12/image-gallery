@@ -2,6 +2,7 @@ const mainImg = document.getElementById("main-img");
 const lightbox = document.querySelector(".lightbox");
 const thumbnails = document.querySelectorAll(".thumbnail");
 const lightboxImage = document.getElementById("lightbox-image");
+const closeBtn = document.querySelector(".close-btn");
 
 // Меняем главное изображение при клике на миниатюру
 thumbnails.forEach((thumbnail) => {
@@ -12,11 +13,23 @@ thumbnails.forEach((thumbnail) => {
 
 // Открываем Lightbox при клике на главное изображение
 mainImg.addEventListener("click", () => {
-  lightboxImage.src = mainImg.src; // Устанавливаем картинку в Lightbox
-  lightbox.classList.remove("hidden"); // Показываем Lightbox
+  if (mainImg.src) {
+    lightboxImage.src = mainImg.src; // Устанавливаем картинку в Lightbox
+    lightbox.classList.remove("hidden"); // Показываем Lightbox
+  } else {
+    console.error("Ошибка загрузки изображения");
+  }
 });
 
-// Закрываем Lightbox при клике на любое место в нем
-lightbox.addEventListener("click", () => {
-  lightbox.classList.add("hidden"); // Прячем Lightbox
+// Закрываем Lightbox при клике на любое место в нем и при клике на фон
+lightbox.addEventListener("click", (e) => {
+  if (e.target === lightbox) {
+    lightbox.classList.add("hidden");
+  }
+});
+
+// Кнопка закрыть
+
+closeBtn.addEventListener("click", () => {
+  lightbox.classList.add("hidden");
 });

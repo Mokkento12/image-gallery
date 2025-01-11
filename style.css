@@ -81,3 +81,47 @@ body {
 .hidden {
   display: none;
 }
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  /* Расположение от верхнего края */
+  right: 10px;
+  /* Расположение от правого края */
+  background: rgba(255, 255, 255, 0.8);
+  /* Полупрозрачный фон */
+  color: #000;
+  /* Цвет текста */
+  border: none;
+  /* Убираем обводку */
+  border-radius: 50%;
+  /* Закругленные края */
+  width: 40px;
+  /* Ширина кнопки */
+  height: 40px;
+  /* Высота кнопки */
+  font-size: 24px;
+  /* Размер текста (иконки) */
+  line-height: 40px;
+  /* Центрирование текста */
+  text-align: center;
+  /* Выравнивание текста */
+  cursor: pointer;
+  /* Курсор при наведении */
+  z-index: 1001;
+  /* Над всеми элементами Lightbox */
+  transition: background 0.3s ease;
+  /* Анимация при наведении */
+}
+
+.close-btn:hover {
+  background: rgba(255, 255, 255, 1);
+  /* Яркий фон при наведении */
+  color: #ff0000;
+  /* Красный цвет текста */
+}
+
+.close-btn:active {
+  transform: scale(0.9);
+  /* Легкий эффект нажатия */
+}
