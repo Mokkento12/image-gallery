@@ -1,3 +1,4 @@
+/* Основные стили галереи */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -5,36 +6,78 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background-color: #f5f5f5;
+  flex-direction: column;
+  gap: 20px;
+  height: 100vh;
+  background-color: #f4f4f4;
 }
 
-.gallery-container {
-  text-align: center;
+.gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
 
-.main-image img {
-  width: 500px;
-  height: auto;
-  margin-bottom: 20px;
-  border: 3px solid #ccc;
+#main-img {
+  width: 90%;
+  max-width: 600px;
+  cursor: pointer;
   border-radius: 8px;
 }
 
 .thumbnails {
   display: flex;
-  justify-content: center;
   gap: 10px;
 }
 
 .thumbnail {
   width: 100px;
-  height: auto;
+  height: 60px;
+  object-fit: cover;
   cursor: pointer;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  border-radius: 4px;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .thumbnail:hover {
   transform: scale(1.1);
-  opacity: 0.8;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Lightbox контейнер */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  /* Используем Flexbox */
+  justify-content: center;
+  /* Центрируем по горизонтали */
+  align-items: center;
+  /* Центрируем по вертикали */
+  background: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+}
+
+/* Картинка в Lightbox */
+.lightbox img {
+  max-width: 90%;
+  /* Устанавливаем максимальные размеры, чтобы не выходило за экран */
+  max-height: 90%;
+  border-radius: 8px;
+  /* Слегка закругляем углы */
+}
+
+
+.lightbox:not(.hidden) {
+  opacity: 1;
+}
+
+.hidden {
+  display: none;
 }
