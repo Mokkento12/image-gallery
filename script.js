@@ -28,6 +28,13 @@ lightbox.addEventListener("click", (e) => {
   }
 });
 
+// Закрываем Lightbox при нажатии клавиши Escape
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && !lightbox.classList.contains("hidden")) {
+    lightbox.classList.add("hidden");
+  }
+});
+
 // Кнопка закрыть
 
 closeBtn.addEventListener("click", () => {
